@@ -169,7 +169,7 @@ status:
 Cluster and Service Templates can be delivered to target namespaces using the `AccessManagement`,
 `ClusterTemplateChain` and `ServiceTemplateChain` objects. The `AccessManagement` object contains the list of
 access rules to apply. Each access rule contains the namespaces' definition for delivering templates into and
-the template chains to deliver. Each `ClusterTemplateChain` and `ServiceTemplateChain` contains the supported templates
+the template chains to deliver, listed as `resources` entries of `kind: ClusterTemplateChain` or `kind: ServiceTemplateChain`. Each `ClusterTemplateChain` and `ServiceTemplateChain` contains the supported templates
 and the upgrade sequences for them.
 
 > INFO:
@@ -205,9 +205,16 @@ The example of `ClusterTemplate` Management:
       - targetNamespaces:
           list:
             - default
-        clusterTemplateChains:
-          - aws
+        resources:
+        - kind: ClusterTemplateChain
+          names:
+            - aws
     ```
+
+    > NOTE:
+    > The previous configuration format, which lists chain names in the `clusterTemplateChains` and
+    > `serviceTemplateChains` fields of an access rule, is deprecated but still supported for backward compatibility.
+    > For details, see [Access Management Resource](../../admin/access/accessmanagement.md#backward-compatibility).
 
 The kcm controllers will deliver all the `ClusterTemplate` objects across the target namespaces.
 As a result, the following new objects should be created:

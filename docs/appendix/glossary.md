@@ -9,13 +9,14 @@ We use the term to refer to those Kubernetes services that need to be installed 
 ## AccessManagement (CRD)
 A Custom Resource Definition (CRD) in {{{ docsVersionInfo.k0rdentName }}} used to define and manage access controls. 
 It typically includes specifications for `AccessRule` and `TargetNamespace` objects to control the 
-distribution of resources such as `ClusterTemplate`, `ServiceTemplate`, and `Credential` objects to 
-specific namespaces within managed clusters.
+distribution of resources such as `ClusterTemplate`, `ServiceTemplate`, and `Credential` objects, as well as
+objects of any other namespaced Kind, to specific namespaces within the management cluster.
 
 ## AccessRules
 A component within the `AccessManagement` CRD that specifies which {{{ docsVersionInfo.k0rdentName }}} 
-resources (such as `ClusterTemplateChain`, `Credential`, and `ServiceTemplateChain` objects) are to be 
-distributed to a defined set of `TargetNamespaces`.
+resources (such as `ClusterTemplateChain`, `Credential`, and `ServiceTemplateChain` objects, or objects of any other
+namespaced Kind) are to be distributed to a defined set of `TargetNamespaces`. The objects to distribute are listed
+in the `resources` field of each access rule.
 
 ## Cluster API (CAPI)
 CAPI is a Kubernetes project that provides a declarative way to manage the lifecycle of 

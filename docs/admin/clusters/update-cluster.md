@@ -56,8 +56,8 @@ As you can see from the `.spec`, the `aws-standalone-cp-{{{ extra.docsVersionInf
 the `aws-standalone-cp-{{{ extra.docsVersionInfo.providerVersions.dashVersions.awsStandaloneCpCluster }}}` template, or it can be used as an upgrade from a cluster that uses `aws-standalone-cp-0.0.2`.
 You wouldn't be able to use this template to update a cluster that uses any other `ClusterTemplate`.
 
-Similarly, the `AccessManagement` object must have properly configured `spec.accessRules` with a list of allowed 
-`ClusterTemplateChain` object names and their namespaces. For more information, see [Template Life Cycle Management](../../reference/template/index.md#template-life-cycle-management).
+Similarly, the `AccessManagement` object must have properly configured `spec.accessRules` with the allowed
+`ClusterTemplateChain` objects (listed as `resources` entries of `kind: ClusterTemplateChain`) and their target namespaces. For more information, see [Template Life Cycle Management](../../reference/template/index.md#template-life-cycle-management).
 
 > NOTE:  
 > Support for displaying all available Cluster Templates for updates in the `ClusterDeployment` status is planned.
