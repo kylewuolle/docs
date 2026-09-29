@@ -102,9 +102,8 @@ type: Opaque
 Each access rule specifies:
 
 1. The target namespaces where credentials should be delivered.
-2. A list of `Credential` names to distribute to those namespaces.
-
-<!-- TODO show an example of the AccessManagement object. -->
+2. A list of resources to distribute to those namespaces. `Credential` objects are selected with a `resources`
+   entry of `kind: Credential`, either by name or by label selector.
 
 The KCM controller copies the specified `Credential` objects from the **system namespace** (defaults to `kcm-system`)
 to the target namespaces based on the `accessRules` in the `AccessManagement` spec.
@@ -124,26 +123,36 @@ to the target namespaces based on the `accessRules` in the `AccessManagement` sp
 To configure the distribution of `Credential` objects:
 
 1. Edit the `AccessManagement` object.
-2. Populate the `.spec.accessRules` field with the list of `Credential` names and the target namespaces.
+2. Populate the `.spec.accessRules` field with the target namespaces and a `resources` entry of
+   `kind: Credential` that selects the `Credential` objects to distribute.
 
 Here’s an example configuration:
 
-<!-- TODO show complete AccessManagement object. -->
-
 ```yaml
+apiVersion: k0rdent.mirantis.com/v1beta1
+kind: AccessManagement
+metadata:
+  name: kcm
 spec:
   accessRules:
   - targetNamespaces:
       list:
         - dev
         - test
-    credentials:
-      - aws-demo
-      - azure-demo
+    resources:
+    - kind: Credential
+      names:
+        - aws-demo
+        - azure-demo
 ```
 
 In this example, the `aws-demo` and `azure-demo` `Credential` objects will be distributed to the `dev` and `test`
 namespaces.
+
+> NOTE:
+> The previous configuration format, which lists `Credential` names in the `credentials` field of an access rule,
+> is deprecated but still supported for backward compatibility. For details, see
+> [Access Management Resource](../accessmanagement.md#backward-compatibility).
 
 ### Regional Credential Distribution
 

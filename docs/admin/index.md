@@ -124,9 +124,10 @@ The {{{ docsVersionInfo.k0rdentName }}} initialization process involves tools su
 The `Management` object represents the {{{ docsVersionInfo.k0rdentName }}} management cluster as a whole.
 The management cluster Day-2 operations (such as [upgrade](upgrade/index.md)) are  executed by manipulating the `Release` and `Management` objects.
 8. `kcm-controller-manager` generates an empty `AccessManagement` object. `AccessManagement` defines
-[access rules](access/accessmanagement.md) for `ClusterTemplate`, `ServiceTemplate`, `Credential` and
-`ClusterAuthentication` propagation across user namespaces. Further, the `AccessManagement` might be edited and used
-along with admin-created `ClusterTemplateChain`, `ServiceTemplateChain`, `Credential` and `ClusterAuthentication` objects.
+[access rules](access/accessmanagement.md) for `ClusterTemplate`, `ServiceTemplate`, `Credential`,
+`ClusterAuthentication` and other objects propagation across user namespaces. Further, the `AccessManagement` might be
+edited and used along with admin-created `ClusterTemplateChain`, `ServiceTemplateChain`, `Credential`,
+`ClusterAuthentication` or any other namespaced objects.
 
 This Administration Guide provides information on:
 
