@@ -3,9 +3,9 @@
 {{{ docsVersionInfo.k0rdentName }}} provides an `AccessManagement` resource (cluster-scoped, singleton) that enables
 controlled distribution of objects from the system namespace (default: `kcm-system`) across other namespaces in the
 management cluster. It supports the built-in {{{ docsVersionInfo.k0rdentName }}} object types (`ClusterTemplateChain`,
-`ServiceTemplateChain`, `Credential`, `ClusterAuthentication`, `DataSource` and `ClusterAuditPolicy`) as well as any
-other namespaced Kind, including custom resources. This resource is created automatically during the installation of
-{{{ docsVersionInfo.k0rdentName }}}.
+`ServiceTemplateChain`, `Credential`, `ClusterAuthentication`, `DataSource`, `ClusterAuditPolicy` and `RBACPolicy`) as
+well as any other namespaced Kind, including custom resources. This resource is created automatically during the
+installation of {{{ docsVersionInfo.k0rdentName }}}.
 
 ## Supported Configuration Options
 
@@ -38,7 +38,8 @@ Each resource rule supports the following fields:
   reported in the `AccessManagement` status, because only namespaced objects can be distributed.
 * `apiGroup` – The API group of the Kind, for example `k0rdent.mirantis.com` or the API group of a custom resource.
   You can omit it for the built-in Kinds (`ClusterTemplateChain`, `ServiceTemplateChain`, `Credential`,
-  `ClusterAuthentication`, `DataSource` and `ClusterAuditPolicy`), in which case it defaults to `k0rdent.mirantis.com`.
+  `ClusterAuthentication`, `DataSource`, `ClusterAuditPolicy` and `RBACPolicy`), in which case it defaults to
+  `k0rdent.mirantis.com`.
   For any other Kind, an omitted `apiGroup` means the core (empty) API group, for example for `ConfigMap`.
 
 You may specify only one of the following mutually exclusive object selectors. If none of them is set, all objects of

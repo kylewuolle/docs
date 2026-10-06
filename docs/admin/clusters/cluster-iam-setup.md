@@ -2,7 +2,7 @@
 
 Identity and authorization are core to operating multi-cluster environments. {{{ docsVersionInfo.k0rdentName }}} provides a consistent mechanism for managing cluster authentication through the `ClusterAuthentication` resource.
 
-This page focuses on **authentication configuration**—how Kubernetes API servers validate user identity. Authorization is handled separately through RBAC and role bindings.
+This page focuses on **authentication configuration**—how Kubernetes API servers validate user identity. Authorization is handled separately through RBAC and role bindings, which you can manage with the [`RBACPolicy`](cluster-rbac-policy.md) resource.
 
 By separating authentication policy from cluster templates and automating its propagation into hosted control planes, {{{ docsVersionInfo.k0rdentName }}} removes error-prone manual steps and provides a repeatable, auditable way to enforce identity across a fleet of clusters.
 
