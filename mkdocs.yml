@@ -168,6 +168,7 @@ nav:
       - Updating standalone clusters: admin/clusters/update-cluster.md
       - Adopting clusters: admin/clusters/admin-adopting-clusters.md
       - Identity and Authorization Management: admin/clusters/cluster-iam-setup.md
+      - Child Cluster RBAC Policy: admin/clusters/cluster-rbac-policy.md
       - Audit Logging: admin/clusters/cluster-audit-policy.md
       - IP Address Management (IPAM): admin/clusters/cluster-ipam.md
       - Migrate ClusterDeployment: admin/clusters/migration.md
